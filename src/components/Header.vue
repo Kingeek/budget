@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <h1>Budget</h1>
-    </header>  
+  </header>
 </template>
 
 <script>

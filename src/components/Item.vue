@@ -1,5 +1,5 @@
 <template>
-  <div class="item">
+  <li class="item">
     <div class="image">
       <img :src="'//logo.clearbit.com/'+data.name+'.com'">
     </div>
@@ -7,7 +7,7 @@
       <span class="name">{{data.name}}</span>
       <span class="value">{{data.value}}</span>
     </div>
-  </div>  
+  </li>  
 </template>
 
 <script>
@@ -72,6 +72,12 @@ export default {
     vertical-align: middle;
     text-align: right;
     padding: 5px 10px;
+
+    &::after {
+      content: "€";
+      display: inline-block;
+      margin-left: 5px;
+    }
   }
 }
 </style>

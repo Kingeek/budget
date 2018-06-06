@@ -10,6 +10,9 @@
         </div>
       </li>
     </ul>
+    <div class="footer">
+      <span class="total">TOTAL: {{total}}</span>
+    </div>
   </section>  
 </template>
 
@@ -25,6 +28,7 @@ export default {
     return {
       Name: "",
       Value: "",
+      total: null,
       items: []
     };
   },
@@ -36,8 +40,12 @@ export default {
     }
   },
   mounted() {
-    if (localStorage.getItem("items"))
+    if (localStorage.getItem("items")) {
       this.items = JSON.parse(localStorage.getItem("items"));
+      for (var i = 0; i <= this.items.length; i++) {
+        this.total += parseInt(this.items[i].value);
+      }
+    }
   },
   watch: {
     items: {
@@ -104,6 +112,34 @@ export default {
     outline: none;
     text-align: right;
     width: 100px;
+
+    &::after {
+      content: "$";
+      display: inline-block;
+      margin-left: 5px;
+    }
+  }
+}
+
+.footer {
+  position: sticky;
+  // height: 60px;
+  background-color: #fff;
+  // top: calc(100vh - 60px);
+  bottom: 0;
+  padding: 20px;
+  text-align: right;
+
+  .total {
+    font-size: 20px;
+    font-weight: 600;
+    color: #262e42;
+
+    &::after {
+      content: "€";
+      display: inline-block;
+      margin-left: 5px;
+    }
   }
 }
 </style>
