@@ -1,15 +1,17 @@
 <template>
   <section class="content">
-    <ul class="list-unstyled">
-      <Item v-for="item in items" :key="item.name" :data="item" />
-      <li class="item">
-        <div class="image"></div>
-        <div class="flex">
-          <input class="name" placeholder="name" v-model="Name" @keydown.enter="nextFocus">
-          <input class="value" placeholder="value" v-model="Value" @keydown.enter="addItem">
-        </div>
-      </li>
-    </ul>
+    <SlickList lockAxis="y" :useDragHandle=true v-model="items" class="list-unstyled">
+      <SlickItem v-for="(item, index) in items" :index="index" :key="index">
+        <Item :data="item" />
+      </SlickItem>
+    </SlickList>
+    <div class="item input">
+      <div class="image"></div>
+      <div class="flex">
+        <input class="name" placeholder="name" v-model="Name" @keydown.enter="nextFocus">
+        <input class="value" placeholder="value" v-model="Value" @keydown.enter="addItem">
+      </div>
+    </div>
     <div class="footer">
       <span class="total">TOTAL: {{total}}</span>
     </div>
@@ -17,12 +19,15 @@
 </template>
 
 <script>
+import { SlickList, SlickItem, HandleDirective } from "vue-slicksort";
 import Item from "./Item.vue";
 
 export default {
   name: "Content",
   components: {
-    Item
+    Item,
+    SlickItem,
+    SlickList
   },
   data: function() {
     return {
@@ -61,6 +66,13 @@ export default {
 <style scoped lang="scss">
 .content {
   padding: 50px 40px;
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.list-unstyled {
+  list-style: none;
 }
 
 .item {
@@ -68,6 +80,10 @@ export default {
   border-radius: 5px;
   transition: 0.15s ease;
   max-width: 600px;
+
+  &.input {
+    margin-bottom: 20px;
+  }
 
   &:hover {
     background-color: #fafafa;
@@ -123,12 +139,11 @@ export default {
 
 .footer {
   position: sticky;
-  // height: 60px;
   background-color: #fff;
-  // top: calc(100vh - 60px);
   bottom: 0;
   padding: 20px;
   text-align: right;
+  border-top: 1px solid #e8e8e8;
 
   .total {
     font-size: 20px;

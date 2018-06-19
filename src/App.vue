@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Aside />
+    <!-- <Aside /> -->
     <Main />
   </div>
 </template>

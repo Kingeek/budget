@@ -6877,6 +6877,10 @@ vue-loader@^15.2.0:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-slicksort@^0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/vue-slicksort/-/vue-slicksort-0.1.8.tgz#e2055f5998efd6a1f040aff4616a7b5e5e64fe85"
+
 vue-style-loader@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-4.1.0.tgz#7588bd778e2c9f8d87bfc3c5a4a039638da7a863"

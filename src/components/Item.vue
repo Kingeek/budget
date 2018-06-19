@@ -1,6 +1,6 @@
 <template>
   <li class="item">
-    <div class="image">
+    <div class="image" v-handle>
       <img :src="'//logo.clearbit.com/'+data.name+'.com'">
     </div>
     <div class="flex">
@@ -11,13 +11,17 @@
 </template>
 
 <script>
+import { ElementMixin, HandleDirective } from "vue-slicksort";
+
 export default {
   name: "Item",
   props: {
     data: {
       type: Object
     }
-  }
+  },
+  mixins: [ElementMixin],
+  directives: { handle: HandleDirective }
 };
 </script>
 
